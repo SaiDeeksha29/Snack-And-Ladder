@@ -19,7 +19,9 @@ public class SnakeAndLadder {
 		//variable
 		int position=0;
 		
-		System.out.println("Player started the game and is at position: "+position);
+		//Computation
+		int random = (int)(Math.random() * (6) + 1);
+		
 	}
 
 }
