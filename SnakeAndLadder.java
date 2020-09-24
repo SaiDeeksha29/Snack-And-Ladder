@@ -26,17 +26,22 @@ public class SnakeAndLadder {
 		int random = (int)(Math.random() * (6) + 1);
 		int choice = (int)(Math.random() * (3) + 1);
 		
-        switch(choice) {
-        
-        case noPlay: System.out.println("The player stays in the same position:"+position);
-                     break;
-        case ladder: position=position+random;
-                     System.out.println("The player moves ahead by number of position received by the die:"+position);
-                     break;
-        case snake:  position=position-random;
-                     System.out.println("The player moves behind by number of position received by the die:"+position);
-                     break;
+		if(position<0) {
+        	position=0;
         }
+        while(position<100) {
+        	random = (int)(Math.random() * (6) + 1);
+        	position+=random;
+            switch(choice) {
+            case noPlay: 
+            	break;
+            case ladder: position=position+random;
+                         break;
+            case snake:  position=position-random;
+                         break;
+            }
+        }
+        System.out.println("The Player is the winner: "+position);
 	}
 
 }
