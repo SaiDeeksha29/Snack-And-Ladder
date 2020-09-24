@@ -29,17 +29,19 @@ public class SnakeAndLadder {
 		if(position<0) {
         	position=0;
         }
-        while(position<100) {
+		while(position!=100) {
         	random = (int)(Math.random() * (6) + 1);
-        	position+=random;
             switch(choice) {
-            case noPlay: 
-            	break;
+            case noPlay: break;
             case ladder: position=position+random;
                          break;
             case snake:  position=position-random;
                          break;
             }
+        	position+=random;
+        	if((position+random)<=100){
+        		position=position+random;
+        	}
         }
         System.out.println("The Player is the winner: "+position);
 	}
