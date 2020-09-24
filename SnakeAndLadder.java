@@ -20,38 +20,62 @@ public class SnakeAndLadder {
 		// TODO Auto-generated method stub
 		
 		//variable
-		int position=0;
-		int no=0;
-		int count=0;
-		
-		//Computation
-		int random = (int)(Math.random() * (6) + 1);
-		
-		if(position<0) {
-            position=0;
+        int p1=0,p2=0;
+        int cur=0;
+        
+        int random = (int)(Math.random() * (6) + 1);
+        
+        //Computation
+        if(p1<0) {
+        	p1=0;
         }
-		System.out.println("Position:Count");
-		while(position<100) {
+        if(p2<0) {
+        	p2=0;
+        }
+        while(p1!=100 && p2!=100) {
+        	if(cur%2==0) {
+        	cur=p1;
         	random = (int)(Math.random() * (6) + 1);
         	int choice = (int)(Math.random() * (3) + 1);
             switch(choice) {
             case noPlay: break;
-            case ladder: position=position+random;
+            case ladder: p1=p1+random;
+                         do {
+                         random = (int)(Math.random() * (6) + 1);
+                         p1+=random;
+                         } while(choice!=ladder);
                          break;
-            case snake:  position=position-random;
-                         if(position<0) {
-   	                     position=0;
-   	                     }
+            case snake:  p1=p1-random;
                          break;
             }
-       	    no=random;
-            if(position>100) {
-           	    position-=no;
-            }
-       	    count++;
-       	    System.out.println(position+"        "+count);
+        	}
+        	else {
+        		cur=p2;
+            	random = (int)(Math.random() * (6) + 1);
+            	int choice = (int)(Math.random() * (3) + 1);
+                switch(choice) {
+                case noPlay: break;
+                case ladder: p2=p2+random;
+                             do {
+                             random = (int)(Math.random() * (6) + 1);
+                             p2+=random;
+                             } while(choice!=ladder);
+                             break;
+                case snake:  p2=p2-random;
+                             break;
+                }
+            	}
+        	cur++;
+        	}
+        if(p1>p2) {
+        	System.out.println("Player 1 is winner");
         }
-        System.out.println("The Player is the winner: "+count);
+        else if(p1<p2) {
+        	System.out.println("Player 2 is winner");
+        }
+        else {
+        	System.out.println("Player 1 and Player 2 are winners");
+        }
 	}
 
 }
