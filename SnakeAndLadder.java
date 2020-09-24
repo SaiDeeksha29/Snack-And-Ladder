@@ -21,29 +21,37 @@ public class SnakeAndLadder {
 		
 		//variable
 		int position=0;
+		int no=0;
+		int count=0;
 		
 		//Computation
 		int random = (int)(Math.random() * (6) + 1);
-		int choice = (int)(Math.random() * (3) + 1);
 		
 		if(position<0) {
-        	position=0;
+            position=0;
         }
-		while(position!=100) {
+		System.out.println("Position:Count");
+		while(position<100) {
         	random = (int)(Math.random() * (6) + 1);
+        	int choice = (int)(Math.random() * (3) + 1);
             switch(choice) {
             case noPlay: break;
             case ladder: position=position+random;
                          break;
             case snake:  position=position-random;
+                         if(position<0) {
+   	                     position=0;
+   	                     }
                          break;
             }
-        	position+=random;
-        	if((position+random)<=100){
-        		position=position+random;
-        	}
+       	    no=random;
+            if(position>100) {
+           	    position-=no;
+            }
+       	    count++;
+       	    System.out.println(position+"        "+count);
         }
-        System.out.println("The Player is the winner: "+position);
+        System.out.println("The Player is the winner: "+count);
 	}
 
 }
